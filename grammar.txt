@@ -1,0 +1,26 @@
+GLOBAL -> MODIFGLOBAL STRUCTDEF | STRUCTDEF
+MODIFGLOBAL -> public | internal 
+MODIF -> MODIFGLOBAL | private 
+DEF -> TYPEDEF | STRUCTDEF
+STRUCTDEF -> struct <STRUCTIN> NAMESTRUCT {  DEFINITIONS } <STRUCTOUT>  END
+END -> ; | E 
+DEFINITIONS -> DEFINE DEFINITIONS | E
+DEFINE -> MODIF DEF | DEF
+TYPEDEF -> TYPE IDENTIFICATORS ;
+TYPE -> TYPEVAL ISNULL ISARR | TYPEREF ISARR 
+ISNULL -> ? | E
+IDENTIFICATORS -> NAMEVAR <NEWVAR> IDENTIFADD
+IDENTIFADD -> , <addname> IDENTIFICATORS | E
+NAMESTRUCT -> NAME <NEWTYPE> | VALIDNAMESTYPE
+NAMEVAR -> NAME <NEWVAR> | VALIDNAMES
+NAME -> /@?[A-Za-z_][A-Za-z0-9_]*/
+ISARR -> ARRDIM ARRDIMADD | E
+ARRDIMADD -> ARRDIM ARRDIMADD | E
+ARRDIM -> [ DIVIDERS ]
+DIVIDERS -> , DIVIDERS | E
+VALIDNAMESTYPE -> SByte <NEWTYPE> | Int16 <NEWTYPE> | Int32 <NEWTYPE> | Int64 <NEWTYPE> | Byte <NEWTYPE> | UInt16 <NEWTYPE> | UInt32 <NEWTYPE> | UInt64 <NEWTYPE> | Single <NEWTYPE> | Double <NEWTYPE> | Decimal <NEWTYPE> | Boolean <NEWTYPE> | Char <NEWTYPE> | String <NEWTYPE> | Object <NEWTYPE>
+VALIDNAMES -> SByte <NEWVAR> | Int16 <NEWVAR> | Int32 <NEWVAR> | Int64 <NEWVAR> | Byte <NEWVAR> | UInt16 <NEWVAR> | UInt32 <NEWVAR> | UInt64 <NEWVAR> | Single <NEWVAR> | Double <NEWVAR> | Decimal <NEWVAR> | Boolean <NEWVAR> | Char <NEWVAR> | String <NEWVAR> | Object <NEWVAR>
+TYPEVALORIG -> SByte | Int16 | Int32 | Int64 | Byte | UInt16 | UInt32 | UInt64 | Single | Double | Decimal | Boolean | Char 
+TYPEVAL -> sbyte | System.SByte | short | System.Int16 | int | System.Int32 | long | System.Int64 | byte | System.Byte | ushort | System.UInt16 | uint | System.UInt32 | ulong | System.UInt64 | float | System.Single | double | System.Double | decimal | System.Decimal | bool | System.Boolean | char | System.Char | TYPEVALORIG
+TYPEREFORIG -> String | Object 
+TYPEREF -> string | System.String | object | System.Object | TYPEREFORIG

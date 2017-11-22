@@ -1,0 +1,20 @@
+﻿public struct Type1
+{
+	Double? Double;
+	Object  String, Obj;
+	System.Int32  String1;
+	private double? [] xcc, y;
+	public System.Int32? z;
+	Boolean[,,][][,,] ppp;
+	internal struct Int32
+	{
+		int ? myInt;
+	    int lol123;
+		struct Type1
+		{
+			float Int32;
+		}
+	}
+	public long rer;
+
+};
